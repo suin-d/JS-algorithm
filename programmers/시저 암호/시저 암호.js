@@ -26,6 +26,26 @@ function solution(s, n) {
   );
 }
 
+// 다른 풀이
+function solution2(s, n) {
+  var upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var lower = 'abcdefghijklmnopqrstuvwxyz';
+  var answer = '';
+
+  for (var i = 0; i < s.length; i++) {
+    var text = s[i];
+    if (text == ' ') {
+      answer += ' ';
+      continue;
+    }
+    var textArr = upper.includes(text) ? upper : lower;
+    var index = textArr.indexOf(text) + n;
+    if (index >= textArr.length) index -= textArr.length;
+    answer += textArr[index];
+  }
+  return answer;
+}
+
 const s1 = 'AB'; //
 const s2 = 'z';
 const s3 = 'a B z';
@@ -35,3 +55,4 @@ const n3 = 4;
 const n4 = 3; // DE
 
 solution(s3, n3); //'BC"
+solution2(s1, n1);
